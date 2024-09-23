@@ -48,7 +48,7 @@ const Editior = () => {
   }, [htmlCode, cssCode, jsCode]);
 
   useEffect(() => {
-    fetch(api_base_url + "/getProject", {
+    fetch(`http://localhost:5000/api/user/project/getpro`, {
       mode: "cors",
       method: "POST",
       headers: {
@@ -66,49 +66,6 @@ const Editior = () => {
         setJsCode(data.project.jsCode);
       });
   }, [projectID]);
-
-  useEffect(() => {
-    const handleKeyDown = (event) => {
-      if (event.ctrlKey && event.key === 's') {
-        event.preventDefault(); // Prevent the default save file dialog
-  
-        // Ensure that projectID and code states are updated and passed to the fetch request
-        fetch(api_base_url + "/updateProject", {
-          mode: "cors",
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json"
-          },
-          body: JSON.stringify({
-            userId: localStorage.getItem("userId"),
-            projId: projectID,  // Make sure projectID is correct
-            htmlCode: htmlCode,  // Passing the current HTML code
-            cssCode: cssCode,    // Passing the current CSS code
-            jsCode: jsCode       // Passing the current JS code
-          })
-        })
-        .then(res => res.json())
-        .then(data => {
-          if (data.success) {
-            alert("Project saved successfully");
-          } else {
-            alert("Something went wrong");
-          }
-        })
-        .catch((err) => {
-          console.error("Error saving project:", err);
-          alert("Failed to save project. Please try again.");
-        });
-      }
-    };
-  
-    window.addEventListener('keydown', handleKeyDown);
-  
-    // Clean up the event listener on component unmount
-    return () => {
-      window.removeEventListener('keydown', handleKeyDown);
-    };
-  }, [projectID, htmlCode, cssCode, jsCode]);
 
 
   return (
