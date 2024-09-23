@@ -2,14 +2,13 @@ import React, { useState } from 'react'
 import logo from "../images/logo.png"
 import { Link, useNavigate } from 'react-router-dom';
 import image from "../images/authPageSide.png";
+import { toast } from "react-hot-toast";
 
 const Login = () => {
   const [email, setEmail] = useState("");
   const [pwd, setPwd] = useState("");
 
   const [error, setError] = useState("");
-
-  const navigate = useNavigate();
 
   const submitForm = (e) => {
     e.preventDefault();
@@ -29,6 +28,7 @@ const Login = () => {
         localStorage.setItem("isLoggedIn", true);
         localStorage.setItem("userId", data.userId);
         setTimeout(() => {
+          toast.success(data.message);
           window.location.href = "/"
         }, 200);
       } else {
