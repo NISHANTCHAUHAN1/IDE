@@ -108,6 +108,7 @@ const Home = () => {
           {/* Search Bar */}
           <div className="inputBox !w-[350px]">
             <input
+              className='serach'
               type="text"
               placeholder='Search Here... !'
               value={searchQuery} // Bind search input to searchQuery state

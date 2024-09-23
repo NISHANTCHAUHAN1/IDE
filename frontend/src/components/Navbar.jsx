@@ -4,7 +4,7 @@ import { Link, useNavigate } from 'react-router-dom'
 import Avatar from 'react-avatar';
 import { MdLightMode } from "react-icons/md";
 import { BsGridFill } from "react-icons/bs";
-import { api_base_url, toggleClass } from '../helper';
+import { toggleClass } from '../helper';
 
 const Navbar = ({ isGridLayout, setIsGridLayout }) => {
 
@@ -12,6 +12,20 @@ const Navbar = ({ isGridLayout, setIsGridLayout }) => {
 
   const [data, setData] = useState(null);
   const [error, setError] = useState("");;
+
+  const [isLightMode, setIsLightMode] = useState(false);
+
+  const changeTheme = () => {
+    // const editorNavbar = document.querySelector(".EditiorNavbar");
+    if (isLightMode) {
+      document.body.classList.remove("lightMode");
+      setIsLightMode(false);
+    } else {
+      // editorNavbar.style.background = "#f4f4f4";
+      document.body.classList.add("lightMode");
+      setIsLightMode(true);
+    }
+  };
 
   useEffect(() => {
     fetch(`http://localhost:5000/api/user/getuserdetails`, {
@@ -59,7 +73,7 @@ const Navbar = ({ isGridLayout, setIsGridLayout }) => {
           <div className='py-[10px] border-b-[1px] border-b-[#fff]'>
             <h3 className='text-[17px]' style={{ lineHeight: 1 }}>{data ? data.name : ""}</h3>
           </div>
-          <i className='flex items-center gap-2 mt-3 mb-2 cursor-pointer' style={{ fontStyle: "normal" }}><MdLightMode className='text-[20px]' /> Light mode</i>
+          <i className='flex items-center gap-2 mt-3 mb-2 cursor-pointer' style={{ fontStyle: "normal" }} onClick={changeTheme}><MdLightMode className='text-[20px]' /> Light mode</i>
           <i onClick={() => setIsGridLayout(!isGridLayout)} className='flex items-center gap-2 mt-3 mb-2 cursor-pointer' style={{ fontStyle: "normal" }}><BsGridFill className='text-[20px]' /> {isGridLayout ? "List" : "Grid"} layout</i>
         </div>
       </div>

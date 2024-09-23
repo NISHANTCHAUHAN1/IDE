@@ -74,3 +74,43 @@ html{
   background-color: #C2C1C1;
   color: #000;
 }
+
+
+/* home page */
+/* Light mode styles */
+body.lightMode {
+  background-color: #f4f4f4;
+  color: #333;
+}
+
+body.lightMode .listCard{
+  background-color: #f4f4f4;
+  color: #333;
+}
+
+body.lightMode .gridCard{
+  background-color: #f4f4f4;
+  color: #333;
+}
+
+body.lightMode .serach{
+  background-color: #f4f4f4;
+  color: #333;
+}
+
+body.lightMode .dropDownNavbar{
+  background-color: #f4f4f4;
+  color: #333;
+}
+
+
+body.lightMode .navbar {
+  background-color: #ffffff;
+}
+
+body.lightMode .btnBlue {
+  background-color: #007bff;
+  color: #fff;
+}
+
+/* Add more rules as needed to support light mode */

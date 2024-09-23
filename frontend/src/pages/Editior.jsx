@@ -3,7 +3,6 @@ import EditiorNavbar from '../components/EditiorNavbar';
 import Editor from '@monaco-editor/react';
 import { MdLightMode } from 'react-icons/md';
 import { AiOutlineExpandAlt } from "react-icons/ai";
-import { api_base_url } from '../helper';
 import { useParams } from 'react-router-dom';
 
 const Editior = () => {
