@@ -2,32 +2,41 @@ import React, { useState } from 'react'
 import img from "../images/code.png"
 import deleteImg from "../images/delete.png"
 import { useNavigate } from 'react-router-dom';
+import toast from 'react-hot-toast';
 
 const ListCard = ({item}) => {
   const navigate = useNavigate();
   const [isDeleteModelShow, setIsDeleteModelShow] = useState(false);
   
-  const deleteProj = (id) => {
-    fetch(`http://localhost:5000/api/user/project/deleteproject`,{
-      mode: "cors",
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        progId: id,
-        userId: localStorage.getItem("userId")
-      })
-    }).then(res=>res.json()).then(data=>{
-      if(data.success){
-        setIsDeleteModelShow(false)
-        window.location.reload()
-      }else{
-        alert(data.message)
-        setIsDeleteModelShow(false)
+  const deleteProj = async (id) => {
+    try {
+      const response = await fetch("http://localhost:5000/api/user/project/deleteproject", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          progId: id,
+          userId: localStorage.getItem("userId"),
+        }),
+      });
+  
+      const data = await response.json();
+  
+      if (data.success) {
+        toast.success(data.message);
+        setIsDeleteModelShow(false);
+        window.location.reload();
+      } else {
+       toast.error(data.message);
+        setIsDeleteModelShow(false);
       }
-    })
-  }
+    } catch (error) {
+      toast.error("An error occurred: " + error.message);
+      setIsDeleteModelShow(false);
+    }
+  };
+  
   return (
     <>
       <div className="listCard mb-2 w-[full] flex items-center justify-between p-[10px] bg-[#141414] cursor-pointer rounded-lg hover:bg-[#202020]">

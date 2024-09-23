@@ -4,6 +4,7 @@ import Editor from '@monaco-editor/react';
 import { MdLightMode } from 'react-icons/md';
 import { AiOutlineExpandAlt } from "react-icons/ai";
 import { useParams } from 'react-router-dom';
+import toast from 'react-hot-toast';
 
 const Editior = () => {
   const [tab, setTab] = useState("html");
@@ -89,9 +90,9 @@ const Editior = () => {
         .then(res => res.json())
         .then(data => {
           if (data.success) {
-            alert("Project saved successfully");
+            toast.success("Project saved successfully");
           } else {
-            alert("Something went wrong");
+            toast.error("Something went wrong")
           }
         })
         .catch((err) => {

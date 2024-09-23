@@ -1,15 +1,14 @@
 import React, { useEffect, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import Avatar from "react-avatar";
 import { MdLightMode } from "react-icons/md";
 import { BsGridFill } from "react-icons/bs";
 import { toggleClass } from "../helper";
+import toast from "react-hot-toast";
 
 const Navbar = ({ isGridLayout, setIsGridLayout }) => {
-  const navigate = useNavigate();
 
   const [data, setData] = useState(null);
-  const [error, setError] = useState("");
 
   const [isLightMode, setIsLightMode] = useState(false);
 
@@ -41,7 +40,7 @@ const Navbar = ({ isGridLayout, setIsGridLayout }) => {
         if (data.success) {
           setData(data.user);
         } else {
-          setError(data.message);
+          toast.error("An error occurred: " + error.message);
         }
       });
   }, []);
