@@ -60,3 +60,24 @@ export const getProject = async (req, res) => {
     return res.json({ success: false, message: "User not found!" });
   }
 };
+
+export const updateProject = async(req,res) => {
+  let { userId, htmlCode, cssCode, jsCode, projId } = req.body;
+  let user = await User.findOne({ _id: userId });
+
+  if (user) {
+    let project = await Project.findOneAndUpdate(
+      { _id: projId },
+      { htmlCode: htmlCode, cssCode: cssCode, jsCode: jsCode },
+      { new: true } // This option returns the updated document
+    );
+
+    if (project) {
+      return res.json({ success: true, message: "Project updated successfully" });
+    } else {
+      return res.json({ success: false, message: "Project not found!" });
+    }
+  } else {
+    return res.json({ success: false, message: "User not found!" });
+  }
+}
