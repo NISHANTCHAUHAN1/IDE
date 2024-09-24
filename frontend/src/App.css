@@ -113,4 +113,9 @@ body.lightMode .btnBlue {
   color: #fff;
 }
 
-/* Add more rules as needed to support light mode */
+/* contact */
+
+body.lightMode .contact {
+  background-color: #ffffff;
+  color: #fff;
+}

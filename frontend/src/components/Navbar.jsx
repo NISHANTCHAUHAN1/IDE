@@ -69,8 +69,7 @@ const Navbar = ({ isGridLayout, setIsGridLayout }) => {
         <div className="links flex items-center gap-2">
           <Link to="/">Home</Link>
           <Link to="/about">About</Link>
-          <Link>Contact</Link>
-          <Link>Services</Link>
+          <Link to="/contact">Contact</Link>
           <button
             onClick={logout}
             className="btnBlue !bg-red-500 min-w-[120px] ml-2 hover:!bg-red-600"

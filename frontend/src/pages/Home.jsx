@@ -23,35 +23,6 @@ const Home = () => {
       )
     : [];
 
-  // const createProj = (e) => {
-  //   if (projTitle === "") {
-  //     alert("Please Enter Project Title");
-  //   } else {
-  //     fetch(`http://localhost:5000/api/user/project/createproject`, {
-  //       mode: "cors",
-  //       method: "POST",
-  //       headers: {
-  //         "Content-Type": "application/json",
-  //       },
-  //       body: JSON.stringify({
-  //         title: projTitle,
-  //         userId: localStorage.getItem("userId"),
-  //       }),
-  //     })
-  //       .then((res) => res.json())
-  //       .then((data) => {
-  //         if (data.success) {
-  //           setIsCreateModelShow(false);
-  //           setProjTitle("");
-  //           alert("Project Created Successfully");
-  //           navigate(`/editior/${data.projectId}`);
-  //         } else {
-  //           alert("Something Went Wrong");
-  //         }
-  //       });
-  //   }
-  // };
-
   const createProj = async (e) => {
     e.preventDefault(); // Prevent default form submission if applicable
   
