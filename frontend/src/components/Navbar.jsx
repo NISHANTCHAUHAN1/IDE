@@ -67,8 +67,8 @@ const Navbar = ({ isGridLayout, setIsGridLayout }) => {
           </Link>
         </div>
         <div className="links flex items-center gap-2">
-          <Link>Home</Link>
-          <Link>About</Link>
+          <Link to="/">Home</Link>
+          <Link to="/about">About</Link>
           <Link>Contact</Link>
           <Link>Services</Link>
           <button

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import logo from "../images/logo.png";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import image from "../images/authPageSide.png";
 import { toast } from "react-hot-toast";
 
