@@ -103,6 +103,11 @@ body.lightMode .dropDownNavbar{
   color: #333;
 }
 
+body.lightMode .contact{
+  background-color: #f4f4f4;
+  color: #333;
+}
+
 
 body.lightMode .navbar {
   background-color: #ffffff;
@@ -114,8 +119,3 @@ body.lightMode .btnBlue {
 }
 
 /* contact */
-
-body.lightMode .contact {
-  background-color: #ffffff;
-  color: #fff;
-}
