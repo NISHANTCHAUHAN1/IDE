@@ -25,7 +25,7 @@ const EditiorNavbar = () => {
       </p>
 
       {/* Download Button */}
-      <div className="hidden sm:block p-2 sm:p-[8px] bg-black rounded-[5px] cursor-pointer text-[16px] sm:text-[20px]">
+      <div className="arrow hidden sm:block p-2 sm:p-[8px] bg-black rounded-[5px] cursor-pointer text-[16px] sm:text-[20px]">
         <FiDownload />
       </div>
     </div>

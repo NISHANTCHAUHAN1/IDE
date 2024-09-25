@@ -122,6 +122,11 @@ body.lightMode .navbar {
   background-color: #ffffff;
 }
 
+body.lightMode .arrow {
+  background-color: #ffffff;
+}
+
+
 body.lightMode .btnBlue {
   background-color: #007bff;
   color: #fff;
