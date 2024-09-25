@@ -75,6 +75,15 @@ html{
   color: #000;
 }
 
+/* phone navbar */
+.lightMode .hamburger{
+  color: #000;
+}
+.lightMode .mobilhamburger{
+  background-color: #C2C1C1;
+  color: #000;
+}
+
 
 /* home page */
 /* Light mode styles */

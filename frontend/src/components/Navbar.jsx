@@ -1,28 +1,30 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import Avatar from "react-avatar";
-import { MdLightMode } from "react-icons/md";
+import { MdLightMode, MdClose } from "react-icons/md";
 import { BsGridFill } from "react-icons/bs";
 import { toggleClass } from "../helper";
+import { FaBars } from "react-icons/fa";
 import toast from "react-hot-toast";
 
 const Navbar = ({ isGridLayout, setIsGridLayout }) => {
-
   const [data, setData] = useState(null);
-
   const [isLightMode, setIsLightMode] = useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const changeTheme = () => {
-    // const editorNavbar = document.querySelector(".EditiorNavbar");
     if (isLightMode) {
       document.body.classList.remove("lightMode");
       setIsLightMode(false);
     } else {
-      // editorNavbar.style.background = "#f4f4f4";
       document.body.classList.add("lightMode");
       setIsLightMode(true);
     }
   };
+
+    const toggleMenu = () => {
+    setIsMenuOpen(!isMenuOpen);
+  }
 
   useEffect(() => {
     fetch(`http://localhost:5000/api/user/getuserdetails`, {
@@ -56,17 +58,17 @@ const Navbar = ({ isGridLayout, setIsGridLayout }) => {
     <>
       <div className="navbar flex items-center justify-between px-[100px] h-[80px] bg-[#141414]">
         <div className="logo">
-          <Link to={"/"} className=" flex items-center gap-2" >
+          <Link to={"/"} className=" flex items-center gap-2">
             <img
               src="https://cdn-icons-png.flaticon.com/128/14111/14111306.png"
               width="50px"
               height="50px"
-              alt=""
+              alt="logo"
             />
             <h1 className="font-bold text-xl">Nish</h1>
           </Link>
         </div>
-        <div className="links flex items-center gap-2">
+        <div className="links hidden md:flex items-center gap-4">
           <Link to="/">Home</Link>
           <Link to="/about">About</Link>
           <Link to="/contact">Contact</Link>
@@ -84,6 +86,50 @@ const Navbar = ({ isGridLayout, setIsGridLayout }) => {
             size="40"
             round="50%"
             className=" cursor-pointer ml-2"
+          />
+        </div>
+
+        {/* Hamburger Icon for Mobile */}
+        <div
+          className="hamburger md:hidden text-white text-2xl cursor-pointer"
+          onClick={toggleMenu}
+        >
+          {isMenuOpen ? <MdClose /> : <FaBars />}
+        </div>
+
+        {/* Dropdown Menu for Mobile */}
+        <div
+          className={`${ 
+            isMenuOpen ? "block" : "hidden"
+          } absolute top-[80px] left-0 w-full  ${isLightMode ? 'bg-white' : `bg-[#141414]`} flex flex-col items-center gap-4 py-4 md:hidden`}
+        >
+          <Link to="/" className={`${isLightMode ? `text-black` : `text-white`}`} onClick={toggleMenu}>
+            Home
+          </Link>
+          <Link to="/about" className={`${isLightMode ? `text-black` : `text-white`}`} onClick={toggleMenu}>
+            About
+          </Link>
+          <Link to="/contact" className={`${isLightMode ? `text-black` : `text-white`}`} onClick={toggleMenu}>
+            Contact
+          </Link>
+          <button
+            onClick={() => {
+              logout();
+              toggleMenu();
+            }}
+            className="btnBlue !bg-red-500 min-w-[120px] hover:!bg-red-600 text-white"
+          >
+            Logout
+          </button>
+          <Avatar
+            onClick={() => {
+              toggleClass(".dropDownNavbar", "hidden");
+              toggleMenu();
+            }}
+            name={data ? data.name : ""}
+            size="40"
+            round="50%"
+            className="cursor-pointer ml-2"
           />
         </div>
 
