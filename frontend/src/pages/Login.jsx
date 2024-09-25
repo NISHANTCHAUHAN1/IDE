@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import logo from "../images/logo.png";
 import { Link } from "react-router-dom";
-import image from "../images/authPageSide.png";
 import { toast } from "react-hot-toast";
 
 const Login = () => {
@@ -54,8 +53,16 @@ const Login = () => {
     <>
       <div className="container w-screen min-h-screen flex items-center justify-between pl-[100px]">
         <div className="left w-[35%]">
-          <img className="w-[200px]" src={logo} alt="" />
-          <form onSubmit={submitForm} className="w-full mt-[60px]" action="">
+          <div className="flex items-center">
+          <img
+              src="https://cdn-icons-png.flaticon.com/128/14111/14111306.png"
+              width="90px"
+              height="90px"
+              alt=""
+            />
+            <h1 className="font-bold text-4xl">Nish</h1>
+          </div>
+          <form onSubmit={submitForm} className="w-full mt-[40px]" action="">
             <div className="inputBox">
               <input
                 required
@@ -93,7 +100,7 @@ const Login = () => {
           </form>
         </div>
         <div className="right w-[55%]">
-          <img className="h-[100vh] w-[100%] object-cover" src={image} alt="" />
+         <img src="https://img.freepik.com/free-vector/portrait-programmer-working-with-pc_23-2148222500.jpg?w=740&t=st=1727124295~exp=1727124895~hmac=32731f50121906d993cbf00f6541d51849c20c9a4eb7d780dcfba68ea8c82d16" alt="" />
         </div>
       </div>
     </>

@@ -58,7 +58,7 @@ const Navbar = ({ isGridLayout, setIsGridLayout }) => {
         <div className="logo">
           <Link to={"/"} className=" flex items-center gap-2" >
             <img
-              src="https://cdn-icons-png.flaticon.com/128/7362/7362019.png"
+              src="https://cdn-icons-png.flaticon.com/128/14111/14111306.png"
               width="50px"
               height="50px"
               alt=""
