@@ -51,7 +51,7 @@ const Login = () => {
 
   return (
     <>
-      <div className="container w-screen min-h-screen flex flex-col lg:flex-row items-center justify-between lg:pl-[100px] p-5">
+      <div className="container w-screen min-h-screen flex flex-col lg:flex-row items-center justify-between lg:pl-[100px] p-3">
         <div className="left w-full lg:w-[35%] mb-10 lg:mb-0">
           <div className="flex items-center">
             <img
