@@ -10,6 +10,8 @@ const Editior = () => {
   const [tab, setTab] = useState("html");
   const [isLightMode, setIsLightMode] = useState(false);
   const [isExpanded, setIsExpanded] = useState(false);
+  console.log(isExpanded);
+  
   const [htmlCode, setHtmlCode] = useState("<h1>Hello world</h1>");
   const [cssCode, setCssCode] = useState("body { background-color: #f4f4f4; }");
   const [jsCode, setJsCode] = useState("// some comment");
@@ -114,8 +116,8 @@ const Editior = () => {
   return (
     <>
       <EditiorNavbar />
-      <div className="flex">
-        <div className={`left w-[${isExpanded ? "100%" : "50%"}]`}>
+      <div className="flex"> 
+        <div  className={`left ${isExpanded ? "w-full" : "w-[50%]"}`}>
           <div className="tabs flex items-center justify-between gap-2 w-full bg-[#1A1919] h-[50px] px-[40px]">
             <div className="tabs flex items-center gap-2">
               <div onClick={() => { setTab("html"); }} className="tab cursor-pointer p-[6px] bg-[#1E1E1E] px-[10px] text-[15px]">HTML</div>
