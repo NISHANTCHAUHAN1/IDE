@@ -1,17 +1,17 @@
-import React, { useEffect, useState } from 'react';
-import EditiorNavbar from '../components/EditiorNavbar';
-import Editor from '@monaco-editor/react';
-import { MdLightMode } from 'react-icons/md';
+import React, { useEffect, useState } from "react";
+import EditiorNavbar from "../components/EditiorNavbar";
+import Editor from "@monaco-editor/react";
+import { MdLightMode } from "react-icons/md";
 import { AiOutlineExpandAlt } from "react-icons/ai";
-import { useParams } from 'react-router-dom';
-import toast from 'react-hot-toast';
+import { useParams } from "react-router-dom";
+import toast from "react-hot-toast";
 
 const Editior = () => {
   const [tab, setTab] = useState("html");
   const [isLightMode, setIsLightMode] = useState(false);
   const [isExpanded, setIsExpanded] = useState(false);
   console.log(isExpanded);
-  
+
   const [htmlCode, setHtmlCode] = useState("<h1>Hello world</h1>");
   const [cssCode, setCssCode] = useState("body { background-color: #f4f4f4; }");
   const [jsCode, setJsCode] = useState("// some comment");
@@ -54,15 +54,15 @@ const Editior = () => {
       mode: "cors",
       method: "POST",
       headers: {
-        "Content-Type": "application/json"
+        "Content-Type": "application/json",
       },
       body: JSON.stringify({
         userId: localStorage.getItem("userId"),
-        projId: projectID // Use projectID here
-      })
+        projId: projectID, // Use projectID here
+      }),
     })
-      .then(res => res.json())
-      .then(data => {
+      .then((res) => res.json())
+      .then((data) => {
         setHtmlCode(data.project.htmlCode);
         setCssCode(data.project.cssCode);
         setJsCode(data.project.jsCode);
@@ -71,63 +71,92 @@ const Editior = () => {
 
   useEffect(() => {
     const handleKeyDown = (event) => {
-      if (event.ctrlKey && event.key === 's') {
+      if (event.ctrlKey && event.key === "s") {
         event.preventDefault(); // Prevent the default save file dialog
-  
+
         // Ensure that projectID and code states are updated and passed to the fetch request
         fetch(`http://localhost:5000/api/user/project/updateproject`, {
           mode: "cors",
           method: "POST",
           headers: {
-            "Content-Type": "application/json"
+            "Content-Type": "application/json",
           },
           body: JSON.stringify({
             userId: localStorage.getItem("userId"),
-            projId: projectID,  // Make sure projectID is correct
-            htmlCode: htmlCode,  // Passing the current HTML code
-            cssCode: cssCode,    // Passing the current CSS code
-            jsCode: jsCode       // Passing the current JS code
+            projId: projectID, // Make sure projectID is correct
+            htmlCode: htmlCode, // Passing the current HTML code
+            cssCode: cssCode, // Passing the current CSS code
+            jsCode: jsCode, // Passing the current JS code
+          }),
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            if (data.success) {
+              toast.success("Project saved successfully");
+            } else {
+              toast.error("Something went wrong");
+            }
           })
-        })
-        .then(res => res.json())
-        .then(data => {
-          if (data.success) {
-            toast.success("Project saved successfully");
-          } else {
-            toast.error("Something went wrong")
-          }
-        })
-        .catch((err) => {
-          console.error("Error saving project:", err);
-          alert("Failed to save project. Please try again.");
-        });
+          .catch((err) => {
+            console.error("Error saving project:", err);
+            alert("Failed to save project. Please try again.");
+          });
       }
     };
-  
-    window.addEventListener('keydown', handleKeyDown);
-  
-    // Clean up the event listener on component unmount
+
+    window.addEventListener("keydown", handleKeyDown);
     return () => {
-      window.removeEventListener('keydown', handleKeyDown);
+      window.removeEventListener("keydown", handleKeyDown);
     };
   }, [projectID, htmlCode, cssCode, jsCode]);
-
 
   return (
     <>
       <EditiorNavbar />
-      <div className="flex"> 
-        <div  className={`left ${isExpanded ? "w-full" : "w-[50%]"}`}>
+      <div className="flex flex-col lg:flex-row">
+        {/* Left side - Editor */}
+        <div className={`left ${isExpanded ? "w-full" : "lg:w-[50%] w-full"}`}>
           <div className="tabs flex items-center justify-between gap-2 w-full bg-[#1A1919] h-[50px] px-[40px]">
             <div className="tabs flex items-center gap-2">
-              <div onClick={() => { setTab("html"); }} className="tab cursor-pointer p-[6px] bg-[#1E1E1E] px-[10px] text-[15px]">HTML</div>
-              <div onClick={() => { setTab("css"); }} className="tab cursor-pointer p-[6px] bg-[#1E1E1E] px-[10px] text-[15px]">CSS</div>
-              <div onClick={() => { setTab("js"); }} className="tab cursor-pointer p-[6px] bg-[#1E1E1E] px-[10px] text-[15px]">JavaScript</div>
+              <div
+                onClick={() => {
+                  setTab("html");
+                }}
+                className="tab cursor-pointer p-[6px] bg-[#1E1E1E] px-[10px] text-[15px]"
+              >
+                HTML
+              </div>
+              <div
+                onClick={() => {
+                  setTab("css");
+                }}
+                className="tab cursor-pointer p-[6px] bg-[#1E1E1E] px-[10px] text-[15px]"
+              >
+                CSS
+              </div>
+              <div
+                onClick={() => {
+                  setTab("js");
+                }}
+                className="tab cursor-pointer p-[6px] bg-[#1E1E1E] px-[10px] text-[15px]"
+              >
+                JavaScript
+              </div>
             </div>
 
             <div className="flex items-center gap-2">
-              <i className="text-[20px] cursor-pointer" onClick={changeTheme}><MdLightMode /></i>
-              <i className="text-[20px] cursor-pointer" onClick={() => { setIsExpanded(!isExpanded); }}><AiOutlineExpandAlt /></i>
+              <i className="text-[20px] cursor-pointer" onClick={changeTheme}>
+                <MdLightMode />
+              </i>
+              {/* Hide expand icon on mobile */}
+              <i
+                className="text-[20px] cursor-pointer hidden sm:block"
+                onClick={() => {
+                  setIsExpanded(!isExpanded);
+                }}
+              >
+                <AiOutlineExpandAlt />
+              </i>
             </div>
           </div>
 
@@ -167,10 +196,11 @@ const Editior = () => {
           )}
         </div>
 
+        {/* Right side - Iframe (appears below the editor on mobile) */}
         {!isExpanded && (
           <iframe
             id="iframe"
-            className="w-[50%] min-h-[82vh] bg-[#fff] text-black"
+            className="lg:w-[50%] w-full min-h-[82vh] bg-[#fff] text-black"
             title="output"
           />
         )}
