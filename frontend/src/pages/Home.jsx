@@ -114,26 +114,28 @@ const Home = () => {
         <h2 className="text-lg sm:text-xl md:text-2xl">
           Hi, {userData ? userData.username : ""} 👋
         </h2>
+
         <div className="flex items-center gap-2">
-          <div className="inputBox !bg-[#202020] mt-4">
+          {/* Search Bar */}
+          <div className="inputBox w-full sm:w-[350px]">
             <input
-              onChange={(e) => {
-                setProjTitle(e.target.value);
-              }}
-              value={projTitle}
               type="text"
-              placeholder="Project Title"
+              placeholder="Search Here... !"
+              value={searchQuery} // Bind search input to searchQuery state
+              onChange={(e) => setSearchQuery(e.target.value)} // Update searchQuery on input change
+              className="w-full p-2 text-sm sm:text-base"
             />
           </div>
           <button
-            onClick={() => setIsCreateModelShow(true)}
-            className="btnBlue rounded-[5px] text-sm sm:text-lg !p-2 !px-4"
+            onClick={() => {
+              setIsCreateModelShow(true);
+            }}
+            className="btnBlue rounded-[5px] mb-4 text-sm sm:text-[20px] p-[5px] sm:p-[10px]"
           >
             +
           </button>
         </div>
       </div>
-
       {/* Project Display */}
       <div className="cards">
         {isGridLayout ? (
