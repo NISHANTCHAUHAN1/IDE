@@ -1,13 +1,12 @@
 {
-  "name": "backend",
+  "name": "ide",
   "version": "1.0.0",
-  "description": "nish",
-  "type": "module",
   "main": "index.js",
+  "type": "module",
   "scripts": {
     "start": "node backend/index.js",
-    "dev": "nodemon backend/index.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "npm install && npm install --prefix frontend && npm run build --prefix frontend",
+    "dev": "nodemon backend/index.js"
   },
   "author": "nish",
   "license": "ISC",
@@ -20,5 +19,8 @@
     "express": "^4.21.0",
     "jsonwebtoken": "^9.0.2",
     "mongoose": "^8.6.2"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.22"
   }
 }
