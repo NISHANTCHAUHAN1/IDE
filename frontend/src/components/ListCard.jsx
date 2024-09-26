@@ -10,7 +10,7 @@ const ListCard = ({item}) => {
   
   const deleteProj = async (id) => {
     try {
-      const response = await fetch("http://localhost:5000/api/user/project/deleteproject", {
+      const response = await fetch(`https://coderunneride.onrender.com/api/user/project/deleteproject`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

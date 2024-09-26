@@ -30,13 +30,6 @@ import projectRoute from './routes/projectRoute.js';
 app.use('/api/user', userRoutes);
 app.use('/api/user/project', projectRoute);
 
-// Serve static frontend files
-// app.use(express.static(path.join(__dirname, "/frontend/dist")));
-
-// app.get("*", (req, res) => {
-//     res.sendFile(path.resolve(__dirname, "frontend", "dist", "index.html"));
-// })
-
 app.use(express.static(path.join(__dirname, "../frontend/dist")));
 app.get("*", (req, res) => {
     res.sendFile(path.resolve(__dirname, "../frontend", "dist", "index.html"));

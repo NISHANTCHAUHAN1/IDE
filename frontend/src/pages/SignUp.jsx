@@ -15,7 +15,7 @@ const SignUp = () => {
     e.preventDefault();
 
     try {
-      const res = await fetch("http://localhost:5000/api/user/register", {
+      const res = await fetch(`https://coderunneride.onrender.com/api/user/register`, {
         mode: "cors",
         method: "POST",
         headers: {

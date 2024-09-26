@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import logo from "../images/logo.png";
 import { Link } from "react-router-dom";
 import { toast } from "react-hot-toast";
 
@@ -12,7 +11,7 @@ const Login = () => {
   const submitForm = async (e) => {
     e.preventDefault();
     try {
-      const res = await fetch("http://localhost:5000/api/user/login", {
+      const res = await fetch(`https://coderunneride.onrender.com/api/user/login`, {
         mode: "cors",
         method: "POST",
         headers: {

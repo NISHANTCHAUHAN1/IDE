@@ -27,7 +27,7 @@ const Navbar = ({ isGridLayout, setIsGridLayout }) => {
   }
 
   useEffect(() => {
-    fetch(`http://localhost:5000/api/user/getuserdetails`, {
+    fetch(`https://coderunneride.onrender.com/api/user/getuserdetails`, {
       mode: "cors",
       method: "POST",
       headers: {

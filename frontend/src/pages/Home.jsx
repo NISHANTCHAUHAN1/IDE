@@ -28,7 +28,7 @@ const Home = () => {
 
     try {
       const response = await fetch(
-        "http://localhost:5000/api/user/project/createproject",
+        `https://coderunneride.onrender.com/api/user/project/createproject`,
         {
           method: "POST",
           headers: {
@@ -57,7 +57,7 @@ const Home = () => {
   };
 
   const getProj = () => {
-    fetch(`http://localhost:5000/api/user/project/getproject`, {
+    fetch(`https://coderunneride.onrender.com/api/user/project/getproject`, {
       mode: "cors",
       method: "POST",
       headers: {
@@ -85,7 +85,7 @@ const Home = () => {
   const [userError, setUserError] = useState("");
 
   useEffect(() => {
-    fetch(`http://localhost:5000/api/user/getuserdetails`, {
+    fetch(`https://coderunneride.onrender.com/api/user/getuserdetails`, {
       mode: "cors",
       method: "POST",
       headers: {
