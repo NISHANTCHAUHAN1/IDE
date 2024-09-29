@@ -7,7 +7,6 @@ export const registerUser = async (req, res) => {
   try {
     const { username, name, email, password } = req.body;
 
-    // Check if the user already exists
     let user = await User.findOne({ email });
     if (user) {
       // Send an error response with status 400
