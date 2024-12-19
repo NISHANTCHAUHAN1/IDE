@@ -15,7 +15,7 @@ const EditiorNavbar = () => {
             alt="Logo"
             className="w-10 h-10 sm:w-12 sm:h-12"
           />
-          <h1 className="font-bold text-lg sm:text-xl">Nish</h1>
+          <h1 className="font-bold text-lg sm:text-xl">ProCode Editor</h1>
         </Link>
       </div>
 

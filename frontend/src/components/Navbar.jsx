@@ -65,7 +65,7 @@ const Navbar = ({ isGridLayout, setIsGridLayout }) => {
               height="50px"
               alt="logo"
             />
-            <h1 className="font-bold text-xl">Nish</h1>
+            <h1 className="font-bold text-xl">ProCode Editor</h1>
           </Link>
         </div>
         <div className="links hidden md:flex items-center gap-4">

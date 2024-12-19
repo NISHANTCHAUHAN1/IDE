@@ -59,7 +59,7 @@ const Login = () => {
               height="90px"
               alt=""
             />
-            <h1 className="font-bold text-4xl">Nish</h1>
+            <h1 className="font-bold text-4xl">ProCode Editor</h1>
           </div>
           <form onSubmit={submitForm} className="w-full mt-[40px]" action="">
             <div className="inputBox">
