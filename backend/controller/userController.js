@@ -26,6 +26,7 @@ export const registerUser = async (req, res) => {
   }
 };
 
+
 // login
 export const loginUser = async (req, res) => {
   const secret = process.env.JWT_SEC;

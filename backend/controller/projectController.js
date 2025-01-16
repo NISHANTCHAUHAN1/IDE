@@ -1,6 +1,7 @@
 import { Project } from "../model/projectModel.js";
 import { User } from "../model/userModel.js";
 
+
 export const createProject = async (req, res) => {
   let { userId, title } = req.body;
   let user = await User.findOne({ _id: userId });
